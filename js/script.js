@@ -3,21 +3,27 @@ const { createApp } = Vue;
 createApp({
   data() {
     return {
-      titolo: "Todo List",
+      titolo: "To Do List",
       todos: [],
+      apiUrl: 'api.php',
       newTodo: "",
     };
   },
   methods: {
     getTodos() {
-      axios.get('api.php').then((response) => {
-        this.todos = response.data;
-        console.log(response.data);
+      axios.get(this.apiUrl).then((response) => {
+        this.todos = response.data.map(todo => {
+            todo.completed = false;
+            return todo;
+          });
       });
     },
     addTodo() {
       if (this.newTodo.trim() !== "") {
-        this.todos.push(this.newTodo.trim());
+        this.todos.push({
+            text:this.newTodo.trim(),
+            completed: false
+        });
         this.newTodo = "";
         this.saveTodos();
         
@@ -27,12 +33,8 @@ createApp({
       this.todos.splice(index, 1);
       this.saveTodos();
     },
-    toggleCompleted(index) {
-        this.todos[index].completed = !this.todos[index].completed;
-        this.saveTodos();
-      },
     saveTodos() {
-      axios.post('api.php', { todos: this.todos }).then((response) => {
+      axios.post(this.apiUrl, { todos: this.todos }).then((response) => {
         console.log(response.data);
       });
     },

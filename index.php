@@ -1,26 +1,48 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8" />
-    <title>Todo List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/style.css" />
-  </head>
-  <body>
+    <title>Todo List</title>
+</head>
+
+<body>
     <div id="app">
-      <h1>{{titolo}} </h1>
-      <ul>
-        <li v-for="(todo, index) in todos" :key="index" >
-            {{ todo }}
-            <button @click="deleteTodo(index)">Cancella</button>
-        </li>
-      </ul>
-        <input type="text" v-model="newTodo" />
-        <button @click="addTodo">Aggiunge Todo</button>
+        <div class="container w-50 my-5">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title text-center">{{titolo}} </h1>
+                    <div class="input-group mb-3">
+                        <input type="text" v-model="newTodo" @keyup.enter="addTodo"
+                        class="form-control" />
+                        <button class="btn btn-primary" @click="addTodo">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li v-for="(todo, index) in todos" :key="index"
+                        class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                        <input type="checkbox" v-model="todo.completed" />
+                        <span class="p-3" :class="{ completed: todo.completed }">{{ todo.text }}</span>
+                        </div>
+                            <button class="btn btn-danger" @click="deleteTodo(index)">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="https://unpkg.com/vue@3.2.47/dist/vue.global.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./js/script.js"></script>
-  </body>
-</html>
+</body>
 
+</html>
