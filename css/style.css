@@ -1,3 +1,39 @@
+:root{
+  --colorRed: #FF0052;
+    --colorBlue: #131661;
+    --colorWhite: #FFFFFF;
+    --lightgreen: #00B67A;
+    --colorBlack: #000000;
+    --secondaryBlue: #090E38;
+    --color-cards: #232B5C;
+}
 .completed {
     text-decoration: line-through;
+    color: var(--colorBlue);
+  }
+body{
+  /*background-image: linear-gradient(to right bottom, #507f96, #568fa4, #5c9fb1, #64afbc, #6ec0c7);*/
+  background-color: var(--secondaryBlue);
+}
+  h1{
+    color: var(--colorRed)! important
+  }
+  .w-img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    padding: 10px;
+  }
+ .check:hover{
+  cursor: pointer;
+ }
+  .card{
+    background-image: linear-gradient(to left top, #20511e, #426536, #61794f, #7e8e6b, #9ba489);
+  }
+  .card-body{
+    background-image: linear-gradient(to left, #323038, #414c57, #506b6f, #6d897d, #9ba489);
+    
+  }
+  li{
+    background-image: linear-gradient(to left top, #2c524c, #3d6763, #507c7a, #639293, #77a8ac);
   }
