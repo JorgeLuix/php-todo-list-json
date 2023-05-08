@@ -9,14 +9,13 @@
     <div id="app">
       <h1>{{titolo}} </h1>
       <ul>
-        <li v-for="(todo, index) in todos" :key="index">
+        <li v-for="(todo, index) in todos" :key="index" >
             {{ todo }}
             <button @click="deleteTodo(index)">Cancella</button>
         </li>
       </ul>
         <input type="text" v-model="newTodo" />
-        <button>Aggiunge Todo</button>
-     
+        <button @click="addTodo">Aggiunge Todo</button>
     </div>
 
     <script src="https://unpkg.com/vue@3.2.47/dist/vue.global.js"></script>
