@@ -9,8 +9,8 @@ createApp ({
       },
       methods: {
          getTodos() {
-            axios.get("api.php?action=getTodos").then(function(response) {
-                //self.todos = response.data.todos;
+            axios.get('api.php').then((response)=> {
+                this.todos = response.data;
                 console.log(response.data);
               });
         },
