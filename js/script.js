@@ -12,10 +12,10 @@ createApp({
   methods: {
     getTodos() {
       axios.get(this.apiUrl).then((response) => {
-        this.todos = response.data.map(todo => {
-            todo.completed = false;
-            return todo;
-          });
+        this.todos = response.data;
+        for (let i = 0; i < this.todos.length; i++) {
+          this.todos[i].completed = false;
+        }
       });
     },
     addTodo() {
